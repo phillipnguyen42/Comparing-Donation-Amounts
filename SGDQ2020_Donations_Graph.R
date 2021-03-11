@@ -68,7 +68,7 @@ summer_data$elapsed_time <- as.numeric(difftime(summer_data$time, data[1, 'time'
 # Clear the rawdata vector
 rawdata <- character()
 
-# There are 675 pages of donations to parse through
+# There are 843 pages of donations to parse through
 # Loop through each of these pages, appending the raw data to the rawdata variable
 for (i in 1:843)
 {
@@ -115,7 +115,7 @@ winter_data$elapsed_time <- as.numeric(difftime(winter_data$time, data[1, 'time'
 ggplot() + 
   geom_ribbon(data = summer_data, 
               aes(x = elapsed_time, y = cumsum, ymin = 0),
-              fill = "steelblue", 
+              fill = "goldenrod1", 
               alpha = 0.5, 
               ymax = summer_data$cumsum) + 
   geom_line(data = summer_data, 
@@ -123,7 +123,7 @@ ggplot() +
             size = 1) +
   geom_ribbon(data = winter_data, 
               aes(x = elapsed_time, y = cumsum, ymin = 0), 
-              fill = "seagreen2", 
+              fill = "steelblue", 
               alpha = 0.5,
               ymax = winter_data$cumsum) +
   geom_line(data = winter_data, 
@@ -134,8 +134,8 @@ ggplot() +
   xlab("Hours after GDQ Event Started") + 
   scale_x_continuous(breaks = seq(summer_data$elapsed_time[1], summer_data$elapsed_time[length(summer_data$elapsed_time)], by = 24)) + 
   scale_y_continuous(labels = comma) + 
-  scale_color_manual(values = c('SGDQ 2020' = 'darkblue',
-                                'AGDQ 2021' = 'darkgreen')) +
+  scale_color_manual(name = "Event", values = c('SGDQ 2020' = 'gold',
+                                'AGDQ 2021' = 'darkblue')) +
   theme_light() + 
   theme(legend.position = c(.15,.75), 
         legend.background = element_blank(), 
