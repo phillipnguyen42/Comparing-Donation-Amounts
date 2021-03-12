@@ -1,8 +1,8 @@
-''' Install these packages if you have not already
-install.packages("tidyverse")
-install.packages("rvest")
-install.packages("lubridate")
-'''
+# Install these packages if you have not already
+# install.packages("tidyverse")
+# install.packages("rvest")
+# install.packages("lubridate")
+
 library(magrittr) # Tool used to pipe "%>%"
 library(stringr) # Tool used to clean "\n" strings
 library(rvest) # Tool used to pull html and css data
@@ -25,7 +25,7 @@ for (i in 1:675)
   website <- read_html(paste0("https://gamesdonequick.com/tracker/donations/sgdq2020?page=", i))
   
   # Print the page number so you know how long this process is going to take
-  print('Scraping data from page', i)
+  # print(paste('Scraping data from page', i))
     
   # Append the rawdata from the website by combining the current rawdata vector with the new website data into the rawdata vector
   rawdata <- c(rawdata, website %>% html_nodes("td") %>% html_text())
@@ -76,7 +76,7 @@ for (i in 1:843)
   website <- read_html(paste0("https://gamesdonequick.com/tracker/donations/AGDQ2021?page=", i))
   
   # Print the page number so you know how long this process is going to take
-  print(paste0('Scraping data from page ', i))
+  # print(paste('Scraping data from page', i))
   
   # Append the rawdata from the website by combining the current rawdata vector with the new website data into the rawdata vector
   rawdata <- c(rawdata, website %>% html_nodes("td") %>% html_text())
@@ -134,8 +134,8 @@ ggplot() +
   xlab("Hours after GDQ Event Started") + 
   scale_x_continuous(breaks = seq(summer_data$elapsed_time[1], summer_data$elapsed_time[length(summer_data$elapsed_time)], by = 24)) + 
   scale_y_continuous(labels = comma) + 
-  scale_color_manual(name = "Event", values = c('SGDQ 2020' = 'gold',
-                                'AGDQ 2021' = 'darkblue')) +
+  scale_color_manual(name = "Event", 
+                     values = c('SGDQ 2020' = 'gold', 'AGDQ 2021' = 'darkblue')) +
   theme_light() + 
   theme(legend.position = c(.15,.75), 
         legend.background = element_blank(), 
